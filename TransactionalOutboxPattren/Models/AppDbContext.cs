@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TransactionalOutboxPattern.Models.OutBox;
 
 namespace TransactionalOutboxPattern.Models;
 

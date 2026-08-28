@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using TransactionalOutboxPattern.Contract;
 using TransactionalOutboxPattern.Contract.Email;
+using TransactionalOutboxPattern.Contract.OutBox;
 using TransactionalOutboxPattern.Models;
+using TransactionalOutboxPattern.Models.OutBox;
 
 namespace TransactionalOutboxPattern.Controllers;
 
@@ -12,10 +14,13 @@ public class OrderController : ControllerBase
 {
     private readonly IOrderService _orderService;
     private readonly IMailService _mailService;
-    public OrderController(IOrderService orderService, IMailService mailService)
+    private readonly IEmailOutbox _emailOutbox;
+
+    public OrderController(IOrderService orderService, IMailService mailService, IEmailOutbox emailOutbox)
     {
         _orderService = orderService;
         _mailService = mailService;
+        _emailOutbox = emailOutbox;
     }
     [HttpPost]
     public async Task<IActionResult> Post(Order order)
@@ -31,7 +36,14 @@ public class OrderController : ControllerBase
             }
             else
             {
-                // store in the email outbox             
+                // store in the email outbox
+                EmailOutbox emailOutbox = new EmailOutbox
+                {
+                    OrderId = result.Id,
+                    Success = false
+                };
+                var outbox = await _emailOutbox.Add(emailOutbox);
+                return Ok(outbox);
             }
         }
         return BadRequest();

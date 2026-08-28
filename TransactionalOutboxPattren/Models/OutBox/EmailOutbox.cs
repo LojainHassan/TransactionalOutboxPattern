@@ -1,4 +1,4 @@
-﻿namespace TransactionalOutboxPattern.Models;
+﻿namespace TransactionalOutboxPattern.Models.OutBox;
 
 public class EmailOutbox
 {

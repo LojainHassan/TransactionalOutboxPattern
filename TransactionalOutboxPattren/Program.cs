@@ -4,6 +4,8 @@ using TransactionalOutboxPattern.Application;
 using TransactionalOutboxPattern.Application.Email;
 using TransactionalOutboxPattern.Contract;
 using TransactionalOutboxPattern.Contract.Email;
+using TransactionalOutboxPattern.Contract.OutBox;
+using TransactionalOutboxPattern.Controllers.OutBox;
 using TransactionalOutboxPattern.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +25,7 @@ var emailSettings = new EmailSettings();
 builder.Configuration.Bind(EmailSettings.SectionName, emailSettings);
 builder.Services.AddSingleton(Options.Create(emailSettings));
 builder.Services.AddSingleton<IMailService, EmailService>();
+builder.Services.AddScoped<IEmailOutbox, EmailOutboxes>();
 
 var app = builder.Build();
 
