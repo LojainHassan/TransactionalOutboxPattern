@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using TransactionalOutboxPattern.Application;
+using TransactionalOutboxPattern.Application.BackgroundService;
 using TransactionalOutboxPattern.Application.Email;
 using TransactionalOutboxPattern.Contract;
 using TransactionalOutboxPattern.Contract.Email;
@@ -26,7 +27,8 @@ builder.Configuration.Bind(EmailSettings.SectionName, emailSettings);
 builder.Services.AddSingleton(Options.Create(emailSettings));
 builder.Services.AddSingleton<IMailService, EmailService>();
 builder.Services.AddScoped<IEmailOutbox, EmailOutboxes>();
-
+builder.Services.AddSingleton<IEmailBackgroundServices, EmailBackgroundServices>();
+builder.Services.AddHostedService<EmailBackgroundService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
