@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TransactionalOutboxPattren.Application;
-using TransactionalOutboxPattren.Contract;
-using TransactionalOutboxPattren.Models;
+using TransactionalOutboxPattern.Application;
+using TransactionalOutboxPattern.Contract;
+using TransactionalOutboxPattern.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

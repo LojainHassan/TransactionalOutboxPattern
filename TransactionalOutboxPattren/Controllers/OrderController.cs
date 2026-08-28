@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TransactionalOutboxPattren.Contract;
-using TransactionalOutboxPattren.Models;
+using TransactionalOutboxPattern.Contract;
+using TransactionalOutboxPattern.Models;
 
-namespace TransactionalOutboxPattren.Controllers;
+namespace TransactionalOutboxPattern.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

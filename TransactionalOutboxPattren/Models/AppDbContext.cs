@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace TransactionalOutboxPattren.Models;
+namespace TransactionalOutboxPattern.Models;
 
 public class AppDbContext : DbContext
 {

@@ -1,4 +1,4 @@
-﻿namespace TransactionalOutboxPattren.Models;
+﻿namespace TransactionalOutboxPattern.Models;
 
 public class Order
 {

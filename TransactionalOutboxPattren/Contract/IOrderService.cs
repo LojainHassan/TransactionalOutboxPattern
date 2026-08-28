@@ -1,6 +1,6 @@
-﻿using TransactionalOutboxPattren.Models;
+﻿using TransactionalOutboxPattern.Models;
 
-namespace TransactionalOutboxPattren.Contract;
+namespace TransactionalOutboxPattern.Contract;
 
 public interface IOrderService
 {
